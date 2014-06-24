@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140624202329) do
+ActiveRecord::Schema.define(version: 20140624213203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "beer_types", force: true do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "beers", force: true do |t|
     t.string   "name",             null: false
@@ -23,6 +29,34 @@ ActiveRecord::Schema.define(version: 20140624202329) do
     t.text     "description",      null: false
     t.string   "image"
     t.float    "alchohol_content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "breweries", force: true do |t|
+    t.string   "name",        null: false
+    t.string   "description", null: false
+    t.integer  "region_id",   null: false
+    t.string   "city"
+    t.string   "state"
+    t.string   "url"
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "regions", force: true do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "reviews", force: true do |t|
+    t.integer  "rating",      null: false
+    t.string   "title",       null: false
+    t.text     "description", null: false
+    t.integer  "user_id",     null: false
+    t.integer  "beer_id",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -48,5 +82,14 @@ ActiveRecord::Schema.define(version: 20140624202329) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "votes", force: true do |t|
+    t.integer  "vote",          null: false
+    t.integer  "voteable_id",   null: false
+    t.string   "voteable_type", null: false
+    t.integer  "user_id",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
