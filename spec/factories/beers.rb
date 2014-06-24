@@ -5,6 +5,6 @@ FactoryGirl.define do
     alcohol content '4.8'
 
     brewery
-    type
+    beer_type
   end
 end
