@@ -8,7 +8,7 @@ feature 'user creates an account, signs in, signs out', %Q{
 
   scenario '-user can create an account' do
     visit "/"
-    click_on "Signup!"
+    click_on "Sign Up!"
     fill_in 'Email', with: 'test@test.com'
     fill_in 'Password', with: '1234abcd'
     fill_in 'Username', with: 'Will1492'
