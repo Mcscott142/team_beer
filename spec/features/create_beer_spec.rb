@@ -30,7 +30,7 @@ scenario 'user adds a new beer and submits' do
   select 'Harpoon', from: 'Brewery'
   select 'IPA', from: 'Beer Type'
 
-  click_on 'Submit'
+  click_on 'Create Beer'
 
   expect(page).to have_content 'Winter Warmer'
   expect(page).to have_content 'Harpoon'
