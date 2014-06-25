@@ -20,7 +20,13 @@ class BeersController < ApplicationController
     end
   end
 
+  def search
+    @beers = Beer.search(params[:search])
+    render :search
+  end
+
   private
+
   def beer_params
   params.require(:beer).permit(:name, :description, :brewery_id, :beer_type_id, :image, :alcohol_content)
   end
