@@ -22,11 +22,13 @@ describe Beer do
   end
 
   it 'requires name' do
-    FactoryGirl.create(:beer, name: nil).should_not be_valid
+    beer = FactoryGirl.build(:beer, name: nil)
+    expect(beer.valid?) == false
   end
 
   it 'requires description' do
-    FactoryGirl.create(:beer, description: nil).should_not be_valid
+    beer = FactoryGirl.build(:beer, description: nil)
+    expect(beer.valid?) == false
   end
 
 end

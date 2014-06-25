@@ -15,19 +15,23 @@ describe Brewery do
   end
 
   it 'requires name' do
-    FactoryGirl.create(:brewery, name: nil).should_not be_valid
+    brewery = FactoryGirl.build(:brewery, name: nil)
+    expect(brewery.valid?) == false
   end
 
   it 'requires description' do
-    FactoryGirl.create(:brewery, description: nil).should_not be_valid
+    brewery = FactoryGirl.build(:brewery, description: nil)
+    expect(brewery.valid?) == false
   end
 
   it 'requires city' do
-    FactoryGirl.create(:brewery, city: nil).should_not be_valid
+    brewery = FactoryGirl.build(:brewery, city: nil)
+    expect(brewery.valid?) == false
   end
 
   it 'requires state' do
-    FactoryGirl.create(:brewery, state: nil).should_not be_valid
+    brewery = FactoryGirl.build(:brewery, state: nil)
+    expect(brewery.valid?) == false
   end
 
 end

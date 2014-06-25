@@ -5,5 +5,6 @@ FactoryGirl.define do
     email 'test@test.com'
     password '1234abcd'
     username 'beer4life'
+    is_21 true
   end
 end

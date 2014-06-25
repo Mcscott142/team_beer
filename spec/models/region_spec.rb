@@ -7,7 +7,8 @@ describe Region do
   end
 
   it 'requires name' do
-    FactoryGirl.create(:region, name: nil).should_not be_valid
+    region = FactoryGirl.build(:region, name: nil)
+    expect(region.valid?) == false
   end
 
 end

@@ -21,27 +21,32 @@ describe Vote do
   end
 
   it 'requires vote' do
-    FactoryGirl.create(:vote, vote: nil).should_not be_valid
+    vote = FactoryGirl.build(:vote, vote: nil)
+    expect(vote.valid?) == false
   end
 
   it 'requires vote between -1 and 1' do
-    FactoryGirl.create(:vote, vote: -2).should_not be_valid
+    vote = FactoryGirl.build(:vote, vote: -2)
+    expect(vote.valid?) == false
   end
 
   it 'requires vote between -1 and 1' do
-    FactoryGirl.create(:vote, vote: 2).should_not be_valid
+    vote = FactoryGirl.build(:vote, vote: 2)
+    expect(vote.valid?) == false
   end
 
   it 'requires voteable_id' do
-    FactoryGirl.create(:vote, voteable_id: nil).should_not be_valid
+    vote = FactoryGirl.build(:vote, voteable_id: nil)
+    expect(vote.valid?) == false
   end
 
   it 'requires user_id' do
-    FactoryGirl.create(:vote, user_id: nil).should_not be_valid
+    vote = FactoryGirl.build(:vote, user_id: nil)
+    expect(vote.valid?) == false
   end
 
   it 'requires voteable_type' do
-    FactoryGirl.create(:vote, voteable_type: nil).should_not be_valid
+    vote = FactoryGirl.build(:vote, voteable_type: nil)
+    expect(vote.valid?) == false
   end
-
 end

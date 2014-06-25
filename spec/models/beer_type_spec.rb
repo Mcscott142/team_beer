@@ -7,7 +7,8 @@ describe BeerType do
   end
 
   it 'requires name' do
-    FactoryGirl.create(:beer_type, name: nil).should_not be_valid
+    beertype = FactoryGirl.build(:beer_type, name: nil)
+    expect(beertype.valid?) == false
   end
 
 end
