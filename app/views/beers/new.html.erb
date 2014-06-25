@@ -1,0 +1,13 @@
+<h1>Add a Beer</h1>
+
+<%= simple_form_for @beer, :html => { :multipart => true} do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :alcohol_content %>
+  <%= f.input :beer_type_id, label: 'Beer Type', :collection => @beer_types %>
+  <%= f.input :brewery_id, :collection => @breweries  %>
+  <h4>Add Image</h4>
+  <%= f.file_field :image %>
+
+  <%= f.button :submit %>
+<% end %>
