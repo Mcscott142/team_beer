@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Review do
 
   it 'creates a new full entry' do
-    FactoryGirl.create(:review).should be_valid
+    FactoryGirl.build(:review).should be_valid
   end
 
   it 'requires title' do

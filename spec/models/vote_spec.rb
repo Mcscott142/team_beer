@@ -4,20 +4,18 @@ describe Vote do
 
   describe 'Associations' do
     it 'associates vote with beer' do
-      beer = FactoryGirl.create(:beer)
-      vote = FactoryGirl.create(:vote, voteable_type: "Beer", voteable_id: beer.id)
-      beer.votes.first.should == vote
+      vote = FactoryGirl.create(:beer_vote)
+      vote.voteable.id.should == vote.voteable_id
     end
 
     it 'associates vote with review' do
-      review = FactoryGirl.create(:review)
-      vote = FactoryGirl.create(:vote, voteable_type: "Review", voteable_id: review.id)
-      review.votes.first.should == vote
+      vote = FactoryGirl.create(:review_vote)
+      vote.voteable.id.should == vote.voteable_id
     end
   end
 
   it 'creates a new full entry' do
-    FactoryGirl.create(:vote).should be_valid
+    FactoryGirl.create(:beer_vote).should be_valid
   end
 
   it 'requires vote' do

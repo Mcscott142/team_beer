@@ -3,7 +3,7 @@ require 'rails_helper'
 describe User do
 
   it 'creates a valid record' do
-    FactoryGirl.create(:user).should be_valid
+    FactoryGirl.build(:user).should be_valid
   end
 
   it 'requires email' do
