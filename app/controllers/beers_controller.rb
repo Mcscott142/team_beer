@@ -20,9 +20,16 @@ class BeersController < ApplicationController
     end
   end
 
+  def show
+    @beer = Beer.find(params[:id])
+    @reviews = @beer.reviews
+    @new_review = Review.new
+  end
+
   private
+
   def beer_params
-  params.require(:beer).permit(:name, :description, :brewery_id, :beer_type_id, :image, :alcohol_content)
+    params.require(:beer).permit(:name, :description, :brewery_id, :beer_type_id, :image, :alcohol_content)
   end
 
 end

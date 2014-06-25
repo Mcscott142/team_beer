@@ -8,6 +8,12 @@ Rails.application.routes.draw do
     root 'welcome#index'
     resources :beers, only: [:create, :show, :index, :new]
 
+    resources :beers do
+      resources :votes, only: [:create, :edit]
+      resources :reviews, only: [:create, :destroy]
+    end
+
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

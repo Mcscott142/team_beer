@@ -1,0 +1,23 @@
+<br><%=  @beer.name %>
+<br><%=  @beer.description %>
+<br><%=  @beer.alcohol_content %>
+<br><%=  @beer.brewery.name %>
+<br><%=  @beer.beer_type.name %>
+
+<ul>
+<% @reviews.each do |r| %>
+  <li> <%= "#{r.rating} - #{r.title} #{r.description}" %> </li>
+<% end %>
+</ul>
+
+Your Review Here:
+<%= simple_form_for [@beer, @new_review] do |f| %>
+  <%= f.input :rating, label: "Rating", as: :radio_buttons, item_wrapper_class: "inline", collection: 1..5 %>
+  <%= f.input :title, label: "Title" %>
+  <%= f.input :description, label: "Review" %>
+  <%= f.button :submit %>
+
+<% end %>
+
+
+

@@ -1,8 +1,19 @@
 <h1>Beer List</h1>
 <ul>
+
+
 <% @beers.each do |beer| %>
 <li>
+
 <%= image_tag beer.image_url(:thumb) if beer.image?  %>
-<%= "#{beer.name}, #{beer.brewery.name}, #{beer.description}, #{beer.beer_type.name}, #{beer.alcohol_content}" %></li>
+
+<%= link_to beer.name, beer_path(beer) %>
+<%= " #{beer.brewery.name}, #{beer.description}, #{beer.beer_type.name}, #{beer.alcohol_content} | upvotes: #{vote_count(beer)}" %>
+
+<%= button_to "Upvote", beer_votes_path(beer), params: { vote: 1 }%>
+<%= button_to "Downvote", beer_votes_path(beer), params: { vote: -1 } %>
+
+
+</li>
 <% end %>
 </ul>
