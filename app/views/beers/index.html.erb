@@ -1,6 +1,8 @@
 <h1>Beer List</h1>
 <ul>
 <% @beers.each do |beer| %>
-<li><%= "#{beer.name}, #{beer.brewery.name}, #{beer.description}, #{beer.beer_type.name}, #{beer.alcohol_content}" %></li>
+<li>
+<%= image_tag beer.image_url(:thumb) if beer.image?  %>
+<%= "#{beer.name}, #{beer.brewery.name}, #{beer.description}, #{beer.beer_type.name}, #{beer.alcohol_content}" %></li>
 <% end %>
 </ul>

@@ -4,6 +4,8 @@ class Beer < ActiveRecord::Base
   has_many :votes, as: :voteable
   has_many :reviews
 
+  mount_uploader :image, ImageUploader
+
   validates :name, presence: true
   validates :brewery_id, presence: true
   validates :beer_type_id, presence: true
