@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
     root 'welcome#index'
     resources :beers, only: [:create, :show, :index, :new]
+    resources :breweries, only: [:index, :show]
 
 
   # Example of regular route:
