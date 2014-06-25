@@ -11,10 +11,63 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140624153544) do
+ActiveRecord::Schema.define(version: 20140625142226) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "beer_types", force: true do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "beers", force: true do |t|
+    t.string   "name",            null: false
+    t.integer  "brewery_id",      null: false
+    t.text     "description",     null: false
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "alcohol_content"
+    t.integer  "beer_type_id",    null: false
+  end
+
+  add_index "beers", ["beer_type_id"], name: "index_beers_on_beer_type_id", using: :btree
+  add_index "beers", ["brewery_id"], name: "index_beers_on_brewery_id", using: :btree
+
+  create_table "breweries", force: true do |t|
+    t.string   "name",        null: false
+    t.string   "description", null: false
+    t.integer  "region_id",   null: false
+    t.string   "city",        null: false
+    t.string   "state",       null: false
+    t.string   "url"
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "breweries", ["region_id"], name: "index_breweries_on_region_id", using: :btree
+
+  create_table "regions", force: true do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "reviews", force: true do |t|
+    t.integer  "rating",      null: false
+    t.string   "title",       null: false
+    t.text     "description", null: false
+    t.integer  "user_id",     null: false
+    t.integer  "beer_id",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reviews", ["beer_id"], name: "index_reviews_on_beer_id", using: :btree
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
@@ -37,5 +90,17 @@ ActiveRecord::Schema.define(version: 20140624153544) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "votes", force: true do |t|
+    t.integer  "vote",          null: false
+    t.integer  "voteable_id",   null: false
+    t.string   "voteable_type", null: false
+    t.integer  "user_id",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
+  add_index "votes", ["voteable_id", "voteable_type"], name: "index_votes_on_voteable_id_and_voteable_type", using: :btree
 
 end

@@ -1,5 +1,28 @@
 require 'rails_helper'
 
-RSpec.describe User, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe User do
+
+  it 'creates a valid record' do
+    FactoryGirl.build(:user).should be_valid
+  end
+
+  it 'requires email' do
+    user = FactoryGirl.build(:user, email: nil)
+    expect(user.valid?) == false
+  end
+
+  it 'requires encrypted_password' do
+    user = FactoryGirl.build(:user, encrypted_password: nil)
+    expect(user.valid?) == false
+  end
+
+  it 'requires username' do
+    user = FactoryGirl.build(:user, username: nil)
+    expect(user.valid?) == false
+  end
+
+  it 'requires is_21' do
+    user = FactoryGirl.build(:user, is_21: nil)
+    expect(user.valid?) == false
+  end
 end

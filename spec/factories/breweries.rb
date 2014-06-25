@@ -5,7 +5,6 @@ FactoryGirl.define do
     state 'MA'
     description 'an old brewery'
     url 'www.google.com'
-
     region
   end
 end
