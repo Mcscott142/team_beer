@@ -5,7 +5,7 @@ feature 'user views the page for a brewery', %Q{
   I want to view a brewery so
   I can see it's details and
   a list of beers they brew.
-} do
+  } do
 
   scenario 'user visits brewery page' do
     FactoryGirl.create(:brewery)

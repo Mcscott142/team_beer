@@ -1,5 +1,4 @@
 class BreweriesController < ApplicationController
-
   def index
     @breweries = Brewery.all
   end
@@ -10,9 +9,9 @@ class BreweriesController < ApplicationController
   end
 
   private
-  def brewery_params
-  params.require(:brewery).permit(:name, :description, :city, :state, :url,
-    :region, :image)
-  end
 
+  def brewery_params
+    params.require(:brewery).permit(:name, :description, :city, :state, :url,
+                  :region, :image)
+  end
 end
