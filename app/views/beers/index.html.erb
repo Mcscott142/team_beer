@@ -1,0 +1,6 @@
+<h1>Beer List</h1>
+<ul>
+<% @beers.each do |beer| %>
+<li><%= "#{beer.name}, #{beer.brewery.name}, #{beer.description}, #{beer.beer_type.name}, #{beer.alcohol_content}" %></li>
+<% end %>
+</ul>
