@@ -12,18 +12,19 @@
   </head>
 
   <body>
-   <% if user_signed_in? %>
-    <%= current_user.username %>
-    <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "button tiny" %>
-  <% else %>
-    <%= link_to "Sign In", new_user_session_path %>
-    <%= link_to "Sign Up!", new_user_registration_path %>
-  <% end %>
+    <% if user_signed_in? %>
+      <%= current_user.username %>
+      <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "button tiny" %>
+    <% else %>
+      <%= link_to "Sign In", new_user_session_path %>
+      <%= link_to "Sign Up!", new_user_registration_path %>
+    <% end %>
 
-  <%= form_tag controller: :beers, action: :search %>
-  <%= text_field_tag :search, params[:search] %>
-  <%= submit_tag "Search" %>
-
+    <%= form_tag("/search", method: "get") do %>
+      <label>Search</label>
+      <%= text_field_tag :search %>
+      <%= submit_tag "Search", :name => nil %>
+    <% end %>
 
     <%= yield %>
     <%= javascript_include_tag "application" %>
