@@ -6,15 +6,13 @@ describe Beer do
 
     it 'associates beer with type' do
       type = FactoryGirl.create(:beer_type)
-      beer = FactoryGirl.create(:beer, type: 1)
-
-      beer.type.should == type
+      beer = FactoryGirl.create(:beer, beer_type: type)
+      beer.beer_type.should == type
     end
 
     it 'associates beer with brewery' do
       brewery = FactoryGirl.create(:brewery)
-      beer = FactoryGirl.create(:beer, brewery_id: 1)
-
+      beer = FactoryGirl.create(:beer, brewery: brewery)
       beer.brewery.should == brewery
     end
   end

@@ -3,8 +3,7 @@ FactoryGirl.define do
     rating "3"
     title 'mediocre beer'
     description 'this beer is very average'
-
-    user
-    beer
+    user_id 1
+    beer_id 1
   end
 end

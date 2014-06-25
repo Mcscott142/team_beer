@@ -5,8 +5,7 @@ describe Brewery do
   describe 'Associations' do
     it 'associates brewery with region' do
       region = FactoryGirl.create(:region)
-      brewery = FactoryGirl.create(:brewery, region_id: 1)
-
+      brewery = FactoryGirl.create(:brewery, region: region)
       brewery.region.should == region
     end
   end

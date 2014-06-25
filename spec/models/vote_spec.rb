@@ -5,15 +5,13 @@ describe Vote do
   describe 'Associations' do
     it 'associates vote with beer' do
       beer = FactoryGirl.create(:beer)
-      vote = FactoryGirl.create(:vote, voteable_type: "beer", voteable_id: 1 )
-
+      vote = FactoryGirl.create(:vote, voteable_type: "Beer", voteable_id: beer.id)
       beer.votes.first.should == vote
     end
 
     it 'associates vote with review' do
       review = FactoryGirl.create(:review)
-      vote = FactoryGirl.create(:vote, voteable_type: "review", voteable_id: 1 )
-
+      vote = FactoryGirl.create(:vote, voteable_type: "Review", voteable_id: review.id)
       review.votes.first.should == vote
     end
   end
