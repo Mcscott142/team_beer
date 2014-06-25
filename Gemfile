@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
@@ -34,6 +37,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'
+  gem 'dotenv-rails'
 end
 
 # Use ActiveModel has_secure_password
