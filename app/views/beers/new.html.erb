@@ -1,0 +1,12 @@
+<h1>Add a Beer</h1>
+
+<%= simple_form_for(@beer) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :alcohol_content %>
+  <%= f.input :beer_type_id %>
+  <%= f.input :brewery_id :collection => @beer_types %>
+  <%= f.input :image %>
+
+  <%= f.button :submit %>
+<% end %>
