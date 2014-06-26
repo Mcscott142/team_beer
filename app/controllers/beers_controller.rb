@@ -28,7 +28,6 @@ class BeersController < ApplicationController
 
   def search
     @beers = Beer.search(params[:search])
-    render :search
   end
 
   private
