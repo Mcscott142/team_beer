@@ -2,6 +2,6 @@
 
 <ul>
 <% @breweries.each do |b| %>
-<li><%= "#{b.name}, #{b.state}, #{b.region}" %></li>
+<li><%= "#{b.name}, #{b.state}, #{b.region.name}" %></li>
 <% end %>
 </ul>

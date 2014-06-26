@@ -21,9 +21,10 @@ feature 'user views a list of breweries', %Q{
     click_on 'Go!'
 
     visit breweries_path
+
     expect(page).to have_content 'Harpoon'
     expect(page).to have_content 'MA'
-    expect(page).to have_content 'Northeast'
+    expect(page).to have_content 'Generic Region'
 
   end
 end

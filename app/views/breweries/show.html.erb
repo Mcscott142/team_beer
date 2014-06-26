@@ -1,10 +1,11 @@
+
 <br><%=  @brewery.name %>
 <br><%=  @brewery.description %>
 <br><%=  @brewery.city %>
 <br><%=  @brewery.state %>
 <br><%=  @brewery.url %>
-<br><%=  @brewery.region %>
-<br><%=  @brewery.image %>
+<br><%=  @brewery.region.name %>
+<%= img_tag @brewery.image_url(:thumb) if @brewery.image? %>
 
 <ul>
 <% @beers.each do |b| %>
