@@ -1,7 +1,7 @@
 class BeersController < ApplicationController
 
   def index
-    @beers = Beer.all
+    @beers = Beer.all.order(:name).page params[:page]
   end
 
   def new
