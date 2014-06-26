@@ -10,4 +10,9 @@ class Beer < ActiveRecord::Base
   validates :brewery_id, presence: true
   validates :beer_type_id, presence: true
   validates :description, presence: true
+
+  def self.search(search)
+    find(:all, :conditions => ['title ILIKE ? OR description ILIKE ?', "%#{search}%", "%#{search}%"])
+  end
+
 end
