@@ -20,8 +20,8 @@
       <%= link_to "Sign Up!", new_user_registration_path %>
     <% end %>
 
-    <%= form_tag("/search", method: "get") do %>
-      <label>Search</label>
+    <%= form_tag( search_beers_path, method: "get") do %>
+      <label for = "Search">Search</label>
       <%= text_field_tag :search %>
       <%= submit_tag "Search", :name => nil %>
     <% end %>

@@ -12,7 +12,11 @@ class Beer < ActiveRecord::Base
   validates :description, presence: true
 
   def self.search(search)
-    find(:all, :conditions => ['title ILIKE ? OR description ILIKE ?', "%#{search}%", "%#{search}%"])
+    if search
+      where('name ILIKE ? OR description ILIKE ?', "%#{search}%", "%#{search}%")
+    else
+      find( all )
+    end
   end
 
 end
