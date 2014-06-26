@@ -6,7 +6,7 @@ I want to be able to upvote
 and downvote a beer
 } do
 
-  scenario 'user upvotes beer' do
+  scenario 'user upvotes a beer' do
     user = FactoryGirl.create(:user)
     sign_in_test_user(user)
 
@@ -19,7 +19,7 @@ and downvote a beer
     beer.votes.first.vote.should == 1
   end
 
-  scenario 'user downvotes beer' do
+  scenario 'user downvotes a beer' do
     user = FactoryGirl.create(:user)
     sign_in_test_user(user)
 
@@ -30,5 +30,18 @@ and downvote a beer
     click_on "Downvote"
 
     beer.votes.first.vote.should == -1
+  end
+
+  scenario 'user votes on a beer a second time' do
+    user = FactoryGirl.create(:user)
+    sign_in_test_user(user)
+
+    beer = FactoryGirl.create(:beer)
+
+    visit '/beers'
+    click_on "Upvote"
+    click_on "Upvote"
+
+    expect(page).to have_content "already"
   end
 end

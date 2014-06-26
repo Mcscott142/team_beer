@@ -2,27 +2,24 @@ class VotesController < ApplicationController
 
   def create
     vote = Vote.new(vote: params[:vote])
+    voteable_detection(vote)
     vote.user_id = current_user.id
-    if !params[:beer_id].nil?
-      vote.voteable_id = params[:beer_id]
-      vote.voteable_type = 'Beer'
+    if Vote.find_by(user_id: current_user.id, voteable_id: vote.id, voteable_type: vote.voteable_type)
+      flash[:notice] = "You already voted on that!"
     else
-      vote.voteable_id = params[:review_id]
-      vote.voteable_type = 'Review'
+      vote.save
     end
-
-    if !vote.save
-      flash[:notice] = "Failed to save"
-      binding.pry
-    end
-
     redirect_to beers_path(params[:beer_id])
   end
 
   private
 
-  def review_params
-    params.require(:review).permit(:title, :description, :rating)
+  def voteable_detection(vote)
+    if !params[:beer_id].nil?
+      vote.voteable_id = params[:beer_id] && vote.voteable_type = 'Beer'
+    else
+      vote.voteable_id = params[:review_id] && vote.voteable_type = 'Review'
+    end
+    vote
   end
-
 end
