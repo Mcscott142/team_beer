@@ -1,3 +1,6 @@
+
+<%= link_to "DeleteBeer", admin_beer_path(@beer), method: :delete if current_user.is_admin %>
+
 <br><%=  @beer.name %>
 <br><%=  @beer.description %>
 <br><%=  @beer.alcohol_content %>
@@ -6,7 +9,10 @@
 
 <ul>
 <% @reviews.each do |r| %>
-  <li> <%= "#{r.rating} - #{r.title} #{r.description}" %> </li>
+  <li>
+    <%= "#{r.rating} - #{r.title} #{r.description}" %>
+    <%= link_to "DeleteReview", admin_review_path(r), method: :delete if current_user.is_admin %>
+  </li>
 <% end %>
 </ul>
 
