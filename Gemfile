@@ -41,6 +41,10 @@ group :development, :test do
   gem 'dotenv-rails'
 end
 
+group :test do
+  gem 'coveralls', require: false
+end
+
 gem 'rails_12factor', group: :production
 
 # Use ActiveModel has_secure_password
