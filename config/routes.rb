@@ -21,6 +21,10 @@ Rails.application.routes.draw do
       resources :reviews, only: [:create, :destroy]
     end
 
+  namespace :admin do
+    resources :beers, only: [:destroy]
+    resources :reviews, only: [:destroy]
+  end
 
 
   # Example of regular route:

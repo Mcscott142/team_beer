@@ -6,5 +6,12 @@ FactoryGirl.define do
     password '1234abcd'
     username 'beer4life'
     is_21 true
+    is_admin false
+
+    trait :admin do
+      is_admin true
+    end
+
+    factory :admin, traits: [:admin]
   end
 end
