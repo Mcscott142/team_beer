@@ -28,7 +28,6 @@ and downvote a beer
     visit '/beers'
 
     click_on "Downvote"
-
     beer.votes.first.vote.should == -1
   end
 
