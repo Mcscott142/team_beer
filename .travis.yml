@@ -1,0 +1,5 @@
+language: ruby
+rvm:
+  - 2.1.0
+before_script:
+  - psql -c 'create database YOUR_APP_NAME_test;' -U postgres
