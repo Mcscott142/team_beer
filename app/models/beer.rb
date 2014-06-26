@@ -15,8 +15,7 @@ class Beer < ActiveRecord::Base
     if search
       where('name ILIKE ? OR description ILIKE ?', "%#{search}%", "%#{search}%")
     else
-      find( all )
+      find(all)
     end
   end
-
 end
