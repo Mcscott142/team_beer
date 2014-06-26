@@ -20,4 +20,10 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << [:is_21, :img_url, :username]
   end
+
+  def authorize_admin
+    if current_user.is_admin == false
+      redirect_to root
+    end
+  end
 end

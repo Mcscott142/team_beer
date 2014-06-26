@@ -7,11 +7,4 @@ class Admin::BeersController < ApplicationController
     redirect_to beers_path
   end
 
-  private
-
-  def authorize_admin
-    if current_user.is_admin == false
-      redirect_to root
-    end
-  end
 end

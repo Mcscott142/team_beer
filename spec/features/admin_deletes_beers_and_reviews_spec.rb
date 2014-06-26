@@ -45,4 +45,22 @@ feature 'admin role exists to police site', %Q{
 
   end
 
+  scenario '-normal user cannot delete a review' do
+
+    user = FactoryGirl.create(:user)
+    review = FactoryGirl.create(:review)
+
+    visit '/'
+    click_on 'Sign In'
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    click_on 'Go!'
+
+    visit "beers/#{review.beer.id}"
+
+    expect(page).to_not have_content "DeleteBeer"
+    expect(page).to_not have_content "DeleteReview"
+
+  end
+
 end
