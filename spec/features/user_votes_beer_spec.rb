@@ -41,6 +41,6 @@ and downvote a beer
     click_on "Upvote"
     click_on "Upvote"
 
-    expect(page).to have_content "already"
+    expect(page).to have_content "You already voted on that!"
   end
 end

@@ -15,7 +15,7 @@ class VotesController < ApplicationController
   private
 
   def voteable_detection(vote)
-    if !params[:beer_id].nil?
+    if params[:beer_id]
       vote[:voteable_id] = params[:beer_id]
       vote.voteable_type = 'Beer'
     else
