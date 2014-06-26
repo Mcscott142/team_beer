@@ -26,6 +26,11 @@ class BeersController < ApplicationController
     @new_review = Review.new
   end
 
+  def search
+    @beers = Beer.search(params[:search])
+    render :search
+  end
+
   private
 
   def beer_params

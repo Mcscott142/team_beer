@@ -1,0 +1,13 @@
+<br><%=  @brewery.name %>
+<br><%=  @brewery.description %>
+<br><%=  @brewery.city %>
+<br><%=  @brewery.state %>
+<br><%=  @brewery.url %>
+<br><%=  @brewery.region %>
+<br><%=  @brewery.image %>
+
+<ul>
+<% @beers.each do |b| %>
+  <li> <%= b.name %> </li>
+<% end %>
+</ul>

@@ -1,0 +1,7 @@
+<h1>Breweries</h1>
+
+<ul>
+<% @breweries.each do |b| %>
+<li><%= "#{b.name}, #{b.state}, #{b.region}" %></li>
+<% end %>
+</ul>
