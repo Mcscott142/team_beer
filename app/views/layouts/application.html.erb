@@ -12,6 +12,41 @@
   </head>
 
   <body>
+    <nav class="top-bar" data-topbar>
+      <ul class="title-area">
+        <li class="name">
+          <h1><%= link_to "Team Beer", root_path%></h1>
+        </li>
+         <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
+
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li class="has-dropdown">
+            <a href="#">Beer</a>
+            <ul class="dropdown">
+              <li><%= link_to "View Beer List", beers_path %></li>
+              <li><%= link_to "Add a Beer", new_beer_path %></li>
+            </ul>
+          </li>
+          <li><%= link_to "Breweries", breweries_path %></li>
+        </ul>
+
+        <!-- Left Nav Section -->
+        <ul class="left">
+          <li><%= link_to "Sign In", new_user_session_path %></li>
+          <li><%= link_to "Sign Up", new_user_registration_path %></li>
+        </ul>
+      </section>
+    </nav>
+
+
+
+
+
+
     <% if user_signed_in? %>
       <%= current_user.username %>
       <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "button tiny" %>
