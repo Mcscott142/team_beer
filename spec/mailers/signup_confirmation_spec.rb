@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe SignupConfirmation, :type => :mailer do
+RSpec.describe SignupConfirmation, type: :mailer do
 
   user = FactoryGirl.create(:user)
 
