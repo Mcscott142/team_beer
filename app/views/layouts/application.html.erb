@@ -36,18 +36,18 @@
         </ul>
         <!-- Left Nav Section -->
         <ul class="right">
-          <li class="has-form">
-            <div class="row collapse">
-              <div class="small">
-                <%= form_tag(search_beers_path, method: "get") do %>
-                  <%= text_field_tag :search %>
-                  <div class="small">
-                  <li><input type="Submit" value="Search" class="button tiny"/></li>
-                <%end%>
-                  </div>
-              </div>
+        <li class="has-form">
+         <%= form_for :search, url: beers_path, method: :get do |f| %>
+          <div class="row collapse">
+            <div class="large-8 small-9 columns">
+              <%= f.text_field :query %>
             </div>
-          </li>
+            <div class="large-4 small-3 columns">
+              <%= f.submit 'Search', class: 'button' %>
+            </div>
+          </div>
+          <% end %>
+        </li>
           <% if user_signed_in? %>
           <li id="signedin"><%= " #{current_user.username}" %></li>
           <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>

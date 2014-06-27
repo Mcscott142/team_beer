@@ -1,7 +1,13 @@
 class BeersController < ApplicationController
 
   def index
-    @beers = Beer.all.order(:name).page params[:page]
+    if params[:search]
+      @beers = Beer.search(params[:search][:query])
+    else
+      @beers = Beer.all
+    end
+
+    @beers = @beers.order(:name).page(params[:page])
   end
 
   def new
@@ -27,13 +33,6 @@ class BeersController < ApplicationController
   end
 
   def search
-    @beers = Beer.search(params[:search])
+
   end
-
-  private
-
-  def beer_params
-    params.require(:beer).permit(:name, :description, :brewery_id, :beer_type_id, :image, :alcohol_content)
-  end
-
 end
