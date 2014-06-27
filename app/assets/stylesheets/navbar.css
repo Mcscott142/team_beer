@@ -1,0 +1,10 @@
+#signedin {
+  color: white;
+  text-decoration: bold;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.searchbox {
+  padding-left: 0px;
+}

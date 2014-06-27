@@ -15,7 +15,7 @@
     <nav class="top-bar" data-topbar>
       <ul class="title-area">
         <li class="name">
-          <h1><%= link_to "Team Beer", root_path%></h1>
+          <h1><%= link_to "Reviewery", root_path%></h1>
         </li>
          <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
         <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
@@ -23,7 +23,7 @@
 
       <section class="top-bar-section">
         <!-- Right Nav Section -->
-        <ul class="right">
+        <ul class="left">
           <li class="has-dropdown">
             <a href="#">Beer</a>
             <ul class="dropdown">
@@ -33,35 +33,37 @@
           </li>
           <li><%= link_to "Breweries", breweries_path %></li>
         </ul>
-
         <!-- Left Nav Section -->
-        <ul class="left">
+        <ul class="right">
+          <li class="has-form">
+            <div class="row collapse">
+              <div class="small">
+              <%= form_tag( search_beers_path, method: "get") do %>
+               <li><%= text_field_tag :search %></li>
+              </div>
+              <div class="small">
+                <li><input type="Submit" value="Search" class="button tiny"/></li>
+                <%end%>
+              </div>
+            </div>
+          </li>
+           <% if user_signed_in? %>
+          <li id="signedin"><%= " #{current_user.username}" %></li>
+          <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+         <% else %>
           <li><%= link_to "Sign In", new_user_session_path %></li>
-          <li><%= link_to "Sign Up", new_user_registration_path %></li>
+          <li><%= link_to "Sign Up!", new_user_registration_path %></li>
+         <% end %>
         </ul>
       </section>
     </nav>
+    </div>
 
-
-
-
-
-
-    <% if user_signed_in? %>
-      <%= current_user.username %>
-      <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "button tiny" %>
-    <% else %>
-      <%= link_to "Sign In", new_user_session_path %>
-      <%= link_to "Sign Up!", new_user_registration_path %>
-    <% end %>
-
-    <%= form_tag( search_beers_path, method: "get") do %>
-      <label for = "Search">Search</label>
-      <%= text_field_tag :search %>
-      <%= submit_tag "Search", :name => nil %>
-    <% end %>
-
+    <div class="row collapse">
+      <div class="small-12 small-centered medium-8 medium-centered large-4 large-centered columns">
     <%= yield %>
+      </div>
+    </div>
     <%= javascript_include_tag "application" %>
   </body>
 </html>
