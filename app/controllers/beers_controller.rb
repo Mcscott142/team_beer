@@ -1,7 +1,7 @@
 class BeersController < ApplicationController
 
   def index
-    @beers = Beer.all
+    @beers = Beer.all.order(vote_count: :desc)
   end
 
   def new
@@ -22,7 +22,7 @@ class BeersController < ApplicationController
 
   def show
     @beer = Beer.find(params[:id])
-    @reviews = @beer.reviews
+    @reviews = @beer.reviews.order(vote_count: :desc)
     @new_review = Review.new
   end
 

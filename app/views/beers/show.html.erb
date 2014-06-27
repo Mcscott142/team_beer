@@ -6,7 +6,7 @@
 
 <ul>
 <% @reviews.each do |r| %>
-  <li> <%= "#{r.rating} - #{r.title} #{r.description}" %> </li>
+  <li> <%= "#{r.rating} - #{r.title} #{r.description} | #{r.vote_count} other users found this review helpful" %> <%= button_to "this was helpful!", beer_review_votes_path(@beer, r), params: { vote: 1, voteable_type: "Review" } %> </li>
 <% end %>
 </ul>
 

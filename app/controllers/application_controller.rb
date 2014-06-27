@@ -9,14 +9,6 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def vote_count(upvoteable_object)
-    sum = 0
-    upvoteable_object.votes.each do |vote|
-      sum = sum + vote.vote
-    end
-    sum
-  end
-
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << [:is_21, :img_url, :username]
   end
