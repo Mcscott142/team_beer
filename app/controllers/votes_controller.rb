@@ -4,7 +4,8 @@ class VotesController < ApplicationController
     vote = Vote.new(vote: params[:vote])
     vote.voteable_detection(params)
     vote.user_id = current_user.id
-    if Vote.find_by(user_id: current_user.id, voteable_id: vote.voteable_id, voteable_type: vote.voteable_type)
+    if Vote.find_by(user_id: current_user.id, voteable_id: vote.voteable_id, 
+                    voteable_type: vote.voteable_type)
       flash[:notice] = "You already voted on that!"
     else
       vote.save
