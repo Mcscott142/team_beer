@@ -42,5 +42,6 @@ and downvote a beer
     click_on "Upvote"
 
     expect(page).to have_content "You already voted on that!"
+    beer.votes.count.should == 1
   end
 end
