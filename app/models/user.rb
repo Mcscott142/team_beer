@@ -12,4 +12,11 @@ class User < ActiveRecord::Base
   validates :email, presence: true
   validates :username, presence: true
   validates :is_21, presence: true
+
+  after_create :send_welcome_message
+
+  def send_welcome_message
+    SignupConfirmation.welcome(self).deliver
+    return true
+  end
 end

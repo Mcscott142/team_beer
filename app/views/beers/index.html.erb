@@ -1,5 +1,4 @@
 <h1>Beer List</h1>
-
 <ul>
   <% @beers.each do |beer| %>
     <li>
@@ -14,3 +13,4 @@
 </ul>
 
 <%= link_to "Add a beer!", new_beer_path %>
+<%= paginate @beers %>

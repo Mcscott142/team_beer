@@ -23,6 +23,10 @@ Rails.application.routes.draw do
       end
     end
 
+  namespace :admin do
+    resources :beers, only: [:destroy]
+    resources :reviews, only: [:destroy]
+  end
 
 
   # Example of regular route:
