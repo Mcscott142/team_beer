@@ -19,5 +19,4 @@ class User < ActiveRecord::Base
     SignupConfirmation.welcome(self).deliver
     return true
   end
-
 end
