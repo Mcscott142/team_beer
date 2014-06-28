@@ -18,7 +18,9 @@ Rails.application.routes.draw do
 
     resources :beers do
       resources :votes, only: [:create, :edit]
-      resources :reviews, only: [:create, :destroy]
+      resources :reviews, only: [:create, :destroy] do
+        resources :votes, only: [:create, :edit]
+      end
     end
 
   namespace :admin do

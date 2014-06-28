@@ -9,9 +9,7 @@
 
 <ul>
 <% @reviews.each do |r| %>
-  <li>
-    <%= "#{r.rating} - #{r.title} #{r.description}" %>
-    <%= link_to "DeleteReview", admin_review_path(r), method: :delete if current_user.is_admin %>
+  <li> <%= "#{r.rating} - #{r.title} #{r.description} | #{r.vote_count} other users found this review helpful" %> <%= button_to "this was helpful!", beer_review_votes_path(@beer, r), params: { vote: 1, voteable_type: "Review" } %><%= link_to "DeleteReview", admin_review_path(r), method: :delete if current_user.is_admin %>
   </li>
 <% end %>
 </ul>

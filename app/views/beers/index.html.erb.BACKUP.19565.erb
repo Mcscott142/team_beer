@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="beer_index_page">
 
 <ul> <b>Sort By</b>
@@ -34,6 +35,20 @@
     </div>
   </div></li>
 <% end %>
+=======
+<h1>Beer List</h1>
+<ul>
+  <% @beers.each do |beer| %>
+    <li>
+      <%= image_tag beer.image_url(:thumb) if beer.image?  %>
+      <%= link_to beer.name, beer_path(beer) %>
+      <%= " #{beer.brewery.name}, #{beer.description}, #{beer.beer_type.name}, #{beer.alcohol_content} | upvotes: #{beer.vote_count}" %>
+
+      <%= button_to "Upvote", beer_votes_path(beer), params: { vote: 1 }%>
+      <%= button_to "Downvote", beer_votes_path(beer), params: { vote: -1 } %>
+    </li>
+  <% end %>
+>>>>>>> master
 </ul>
 </div>
 
