@@ -1,7 +1,6 @@
 class BeersController < ApplicationController
 
   def index
-   # binding.pry
     if ['vote_count', 'avg_rating', 'name'].include? params[:order_by]
       order_by = { params[:order_by] => :desc}
     else
