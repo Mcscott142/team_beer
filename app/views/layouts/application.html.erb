@@ -50,9 +50,6 @@
              <div class="small-3 columns">
               <%= f.label 'query', class: 'hidden_label'%>
               <%= f.text_field :query %>
-
-        <%= yield %>
-
             </div>
             <div class="small-3 columns">
               <%= f.submit 'Search', class: 'button' %>
@@ -71,6 +68,7 @@
       </section>
     </nav>
     </div>
+    <%= yield %>
 
     <%= javascript_include_tag "application" %>
 
