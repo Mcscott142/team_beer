@@ -31,4 +31,12 @@ describe Beer do
     expect(beer.valid?) == false
   end
 
+
+  it 'searches for a value' do
+      beer = FactoryGirl.create(:beer, name: "miller")
+      results = Beer.beer_search('miller')
+      expect(results.count).to eq(1)
+  end
+
+
 end

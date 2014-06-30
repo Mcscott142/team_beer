@@ -8,3 +8,7 @@
 .searchbox {
   padding-left: 0px;
 }
+
+.hidden_label {
+display: none;
+}

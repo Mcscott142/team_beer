@@ -9,7 +9,8 @@ feature 'user searches for a beer', %Q{
     FactoryGirl.create(:beer, name: "Fat Tire")
 
     visit "/"
-    fill_in 'search', with: 'Fat Tire'
+
+    fill_in "query", with: 'Fat Tire'
     click_on 'Search'
 
     expect(page).to have_content 'Fat Tire'
