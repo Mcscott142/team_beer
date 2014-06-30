@@ -25,7 +25,7 @@
     </div>
 
     <div class="total_votes">
-      <span><%= vote_count(beer) %></span>
+      <span><%= beer.vote_count %></span>
       <p>Total Votes</p>
 
       <%= button_to "Upvote", beer_votes_path(beer), params: { vote: 1 }%>
