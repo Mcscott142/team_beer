@@ -9,7 +9,7 @@ class BeersController < ApplicationController
       order_by = { 'vote_count' => :desc }
     end
 
-    @beers = Beer.order(:name).page(params[:page])
+    @beers = Beer.order(order_by).page(params[:page])
   end
 
   def new

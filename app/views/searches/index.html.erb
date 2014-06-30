@@ -5,7 +5,7 @@
     <li>
       <%= image_tag beer.image_url(:thumb) if beer.image?  %>
       <%= link_to beer.name, beer_path(beer) %>
-      <%= " #{beer.brewery.name}, #{beer.description}, #{beer.beer_type.name}, #{beer.alcohol_content} | upvotes: #{vote_count(beer)}" %>
+      <%= " #{beer.brewery.name}, #{beer.description}, #{beer.beer_type.name}, #{beer.alcohol_content} | upvotes: #{beer.vote_count}" %>
       <%= button_to "Upvote", beer_votes_path(beer), params: { vote: 1 }%>
       <%= button_to "Downvote", beer_votes_path(beer), params: { vote: -1 } %>
     </li>
