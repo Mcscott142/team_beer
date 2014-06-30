@@ -5,6 +5,7 @@ class SearchesController < ApplicationController
       @searched_beers = @searched_beers.page(params[:page]).per(2)
     else
       @searched_breweries = Brewery.brewery_search(params[:search][:query])
+      @searched_breweries = @searched_breweries.page(params[:page]).per(2)
     end
   end
 end

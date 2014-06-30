@@ -19,6 +19,7 @@
       <li><%= "#{b.name}, #{b.state}, #{b.region.name}" %></li>
     <% end %>
   </ul>
+  <ul class="pagination" ><%= paginate @searched_breweries %>  </ul>
 <% end %>
 
 
