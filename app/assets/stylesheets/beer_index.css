@@ -1,0 +1,54 @@
+
+.beer_index_page > ul {
+  list-style: none;
+  display: inline;
+  float: right;
+}
+
+.beer_index_page > ul > li {
+  list-style-type: none;
+  display:inline;
+  padding: 0 1em;
+}
+
+.beer_index_page > div {
+text-align: center;
+}
+
+.beer_index_page > div > ul {
+  list-style: none;
+}
+
+.beer_index_page > div > li {
+  list-style-type: none;
+}
+
+.beer_index_result {
+  border: 2px solid gray;
+  display: inline-block;
+  width: 75%;
+  padding: 1em;
+  margin: 0 0 1em 0;
+
+}
+
+.beer_index_result_text {
+  display: inline-block;
+  float: left;
+  text-align: left;
+}
+
+.beer_index_result_text > p {
+  font-size: 10pt;
+}
+
+.beer_index_result > img {
+  display: inline-block;
+  float: left;
+  margin: 0 3em 0 0;
+}
+
+.total_votes > span {
+  font-size: 20pt;
+}
+

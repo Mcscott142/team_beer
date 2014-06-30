@@ -13,7 +13,6 @@ and downvote a beer
     beer = FactoryGirl.create(:beer)
 
     visit '/beers'
-
     click_on "Upvote"
 
     beer.votes.first.vote.should == 1
@@ -41,7 +40,16 @@ and downvote a beer
     click_on "Upvote"
     click_on "Upvote"
 
-    expect(page).to have_content "You already voted on that!"
+    expect(page).to have_content 'You already voted on that!'
     beer.votes.count.should == 1
+  end
+
+  scenario 'user upvotes a beer without logging in first' do
+    beer = FactoryGirl.create(:beer)
+
+    visit '/beers'
+    click_on "Upvote"
+
+    expect(page).to have_content 'You must log in to vote!'
   end
 end

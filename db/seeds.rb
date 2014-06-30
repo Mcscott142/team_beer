@@ -24,6 +24,3 @@ Brewery.create(name: "Elisian", description: "Hipster beer" ,city: "Seattle", st
 Brewery.create(name: "Stone Brewing", description: "Hoppy beer" ,city: "Escondito", state: "CA", region_id: 5)
 Brewery.create(name: "Henekien", description: "German beer" ,city: "Germany", state: "Not America", region_id: 6)
 
-(1..100).each do |t|
-  FactoryGirl.create(:beer, name: "Beer" + t.to_s)
-end
