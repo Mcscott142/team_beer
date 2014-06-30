@@ -5,6 +5,8 @@ class ReviewsController < ApplicationController
     review.beer_id = params[:beer_id]
     review.user = current_user
 
+    binding.pry
+
     if !review.save
       flash[:notice] = "Failed to save"
     end
