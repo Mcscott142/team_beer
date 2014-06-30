@@ -44,7 +44,7 @@
          <%= form_for :search, url: searches_path, method: :get do |f| %>
           <div class="row collapse">
 
-            <div class="small-3 columns">
+            <div class="small-2 columns", id="search_drop">
              <%= f.select :search_type, collection: ['Beer', 'Brewery'] %>
              </div>
              <div class="small-3 columns">
@@ -59,7 +59,7 @@
           <% end %>
         </li>
           <% if user_signed_in? %>
-          <li id="signedin"><%= " #{current_user.username}" %></li>
+          <li id="signedin"><%= link_to "#{current_user.username}", edit_user_registration_path %></li>
           <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
           <% else %>
           <li><%= link_to "Sign In", new_user_session_path %></li>

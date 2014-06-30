@@ -1,7 +1,6 @@
 #signedin {
   color: white;
   text-decoration: bold;
-  padding-top: 10px;
   padding-left: 10px;
 }
 
@@ -11,4 +10,8 @@
 
 .hidden_label {
 display: none;
+}
+
+#search_drop {
+  padding-top: 5px;
 }
