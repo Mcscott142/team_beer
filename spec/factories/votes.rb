@@ -2,21 +2,19 @@ FactoryGirl.define do
   factory :vote do
     vote "0"
 
-    trait :beer_vote do
-      voteable_type 'Beer'
-      association :voteable, factory: :beer
+    trait :post_vote do
+      voteable_type 'Post'
+      association :votable, factory: :post
       association :user, factory: :user
     end
 
-    trait :review_vote do
-      voteable_type 'Review'
-      association :voteable, factory: :review
+    trait :comment_vote do
+      voteable_type 'Comment'
+      association :votable, factory: :comment
       association :user, factory: :user
     end
 
-
-    factory :beer_vote, traits: [:beer_vote]
-    factory :review_vote, traits: [:review_vote]
-
+    factory :post_vote, traits: [:post_vote]
+    factory :comment_vote, traits: [:comment_vote]
   end
 end
