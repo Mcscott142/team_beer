@@ -13,6 +13,7 @@
   <li><div class="beer_index_result">
 
     <%= image_tag beer.image_url(:med_thumb) if beer.image?  %>
+    <%= image_tag "default_beer.jpg", size: '150x150' if !beer.image?  %>
 
     <div class="beer_index_result_text">
       <span><%= link_to beer.name, beer_path(beer) %>,
