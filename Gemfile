@@ -3,6 +3,7 @@ ruby '2.0.0'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
+gem 'kaminari'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
@@ -31,6 +32,7 @@ gem 'simple_form'
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 
 group :development, :test do
+  gem 'email_spec'
   gem 'pry-rails'
   gem 'factory_girl_rails'
   gem 'spring'
@@ -38,6 +40,10 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'dotenv-rails'
+end
+
+group :test do
+  gem 'coveralls', require: false
 end
 
 gem 'rails_12factor', group: :production

@@ -1,19 +1,41 @@
-<h1>Beer List</h1>
+<div class="beer_index_page">
+
+<ul> <b>Sort By</b>
+  <li><%= link_to "Name", {:controller => "beers", :action => "index", :order_by => 'name' }%></li>
+  <li><%= link_to "Votes", {:controller => "beers", :action => "index", :order_by => 'vote_count' }%></li>
+  <li><%= link_to "Rating", {:controller => "beers", :action => "index", :order_by => 'avg_rating' }%></li>
+</ul>
+<br>
+
+<div>
 <ul>
-
-
 <% @beers.each do |beer| %>
-<li>
+  <li><div class="beer_index_result">
 
-<%= image_tag beer.image_url(:thumb) if beer.image?  %>
+    <%= image_tag beer.image_url(:med_thumb) if beer.image?  %>
 
-<%= link_to beer.name, beer_path(beer) %>
-<%= " #{beer.brewery.name}, #{beer.description}, #{beer.beer_type.name}, #{beer.alcohol_content} | upvotes: #{vote_count(beer)}" %>
+    <div class="beer_index_result_text">
+      <span><%= link_to beer.name, beer_path(beer) %>,
+      <em><%= beer.brewery.name %></em></span><br>
 
-<%= button_to "Upvote", beer_votes_path(beer), params: { vote: 1 }%>
-<%= button_to "Downvote", beer_votes_path(beer), params: { vote: -1 } %>
+      <span>Average Rating: <%= beer.avg_rating.round(1) %></span><br>
+      <span>ABV: <%= beer.alcohol_content %></span><br>
+      <p><%= "#{beer.description[0..40]}..." %></p><br>
 
+    </div>
 
-</li>
+    <div class="total_votes">
+      <span><%= beer.vote_count %></span>
+      <p>Total Votes</p>
+
+      <%= button_to "Upvote", beer_votes_path(beer), params: { vote: 1 } %>
+      <%= button_to "Downvote", beer_votes_path(beer), params: { vote: -1 } %>
+
+    </div>
+  </div></li>
 <% end %>
+</ul>
+
+<ul class="pagination">
+<%= paginate @beers %>
 </ul>

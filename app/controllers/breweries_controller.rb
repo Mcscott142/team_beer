@@ -1,6 +1,10 @@
 class BreweriesController < ApplicationController
   def index
-    @breweries = Brewery.all
+    if @searched_breweries
+      @breweries = @searched_breweries
+    else
+      @breweries = Brewery.all
+    end
   end
 
   def show
