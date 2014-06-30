@@ -1,7 +1,7 @@
 class BeersController < ApplicationController
 
   def index
-    @beers = Beer.all.order(vote_count: :desc).page params[:page]
+    @beers = Beer.order(:name).page(params[:page])
   end
 
   def new
@@ -22,18 +22,13 @@ class BeersController < ApplicationController
 
   def show
     @beer = Beer.find(params[:id])
-    @reviews = @beer.reviews.order(vote_count: :desc)
+    @reviews = @beer.reviews
     @new_review = Review.new
   end
+end
 
-  def search
-    @beers = Beer.search(params[:search])
-  end
-
-  private
+ private
 
   def beer_params
     params.require(:beer).permit(:name, :description, :brewery_id, :beer_type_id, :image, :alcohol_content)
   end
-
-end
