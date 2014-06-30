@@ -25,4 +25,10 @@ class BeersController < ApplicationController
     @reviews = @beer.reviews
     @new_review = Review.new
   end
+
+   private
+
+  def beer_params
+    params.require(:beer).permit(:name, :description, :brewery_id, :beer_type_id, :image, :alcohol_content)
+  end
 end
