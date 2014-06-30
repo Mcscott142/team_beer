@@ -35,8 +35,7 @@
   </div></li>
 <% end %>
 </ul>
-</div>
 
-<%= link_to "Add a beer!", new_beer_path %>
+<ul class="pagination">
 <%= paginate @beers %>
-</div>
+</ul>

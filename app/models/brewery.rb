@@ -8,4 +8,8 @@ class Brewery < ActiveRecord::Base
   validates :description, presence: true
   validates :city, presence: true
   validates :state, presence: true
+
+  def self.brewery_search(search)
+    where('name ILIKE ? OR description ILIKE ?', "%#{search}%", "%#{search}%")
+  end
 end

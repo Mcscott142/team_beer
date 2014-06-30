@@ -1,17 +1,15 @@
 class BeersController < ApplicationController
 
   def index
-<<<<<<< HEAD
     @beers = Beer.order(:name).page(params[:page])
-=======
+
     if ['vote_count', 'avg_rating', 'name'].include? params[:order_by]
       order_by = { params[:order_by] => :desc}
     else
       order_by = { 'vote_count' => :desc }
     end
 
-    @beers = Beer.all.order(order_by).page params[:page]
->>>>>>> 77dec21ab792b9c6e3aa65885c1e38af0b9f6f4f
+    @beers = Beer.order(:name).page(params[:page])
   end
 
   def new
@@ -35,10 +33,11 @@ class BeersController < ApplicationController
     @reviews = @beer.reviews
     @new_review = Review.new
   end
-end
 
  private
 
   def beer_params
     params.require(:beer).permit(:name, :description, :brewery_id, :beer_type_id, :image, :alcohol_content)
   end
+end
+
