@@ -23,28 +23,17 @@ ActiveRecord::Schema.define(version: 20140629000230) do
   end
 
   create_table "beers", force: true do |t|
-<<<<<<< HEAD
-    t.string   "name",                         null: false
-    t.integer  "brewery_id",                   null: false
-    t.text     "description",                  null: false
-=======
     t.string   "name",                           null: false
     t.integer  "brewery_id",                     null: false
     t.text     "description",                    null: false
->>>>>>> 77dec21ab792b9c6e3aa65885c1e38af0b9f6f4f
     t.string   "image"
     t.float    "alchohol_content"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "alcohol_content"
-<<<<<<< HEAD
-    t.integer  "beer_type_id",                 null: false
-    t.integer  "vote_count",       default: 0
-=======
     t.integer  "beer_type_id",                   null: false
     t.integer  "vote_count",       default: 0
     t.float    "avg_rating",       default: 0.0
->>>>>>> 77dec21ab792b9c6e3aa65885c1e38af0b9f6f4f
   end
 
   add_index "beers", ["beer_type_id"], name: "index_beers_on_beer_type_id", using: :btree

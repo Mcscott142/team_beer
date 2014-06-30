@@ -28,8 +28,8 @@
       <span><%= beer.vote_count %></span>
       <p>Total Votes</p>
 
-      <%= button_to "Upvote", beer_votes_path(beer), params: { vote: 1 } if current_user %>
-      <%= button_to "Downvote", beer_votes_path(beer), params: { vote: -1 } if current_user %>
+      <%= button_to "Upvote", beer_votes_path(beer), params: { vote: 1 } %>
+      <%= button_to "Downvote", beer_votes_path(beer), params: { vote: -1 } %>
 
     </div>
   </div></li>
