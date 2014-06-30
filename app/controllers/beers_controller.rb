@@ -1,13 +1,7 @@
 class BeersController < ApplicationController
 
   def index
-    if params[:search]
-      @beers = Beer.search(params[:search][:query])
-    else
-      @beers = Beer.all
-    end
-
-    @beers = @beers.order(:name).page(params[:page])
+    @beers = Beer.order(:name).page(params[:page])
   end
 
   def new
@@ -30,9 +24,5 @@ class BeersController < ApplicationController
     @beer = Beer.find(params[:id])
     @reviews = @beer.reviews
     @new_review = Review.new
-  end
-
-  def search
-
   end
 end

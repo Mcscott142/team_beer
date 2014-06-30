@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  resources :searches
+
   resources :beers do
     collection do
       get :search

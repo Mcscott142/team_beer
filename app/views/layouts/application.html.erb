@@ -37,9 +37,10 @@
         <!-- Left Nav Section -->
         <ul class="right">
         <li class="has-form">
-         <%= form_for :search, url: beers_path, method: :get do |f| %>
+         <%= form_for :search, url: searches_path, method: :get do |f| %>
           <div class="row collapse">
             <div class="large-8 small-9 columns">
+              <%= f.select :search_type, collection: ['Beer', 'Brewery'] %>
               <%= f.text_field :query %>
             </div>
             <div class="large-4 small-3 columns">
