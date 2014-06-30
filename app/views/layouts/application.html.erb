@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Reviewery" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -51,6 +51,8 @@
               <%= f.label 'query', class: 'hidden_label'%>
               <%= f.text_field :query %>
 
+        <%= yield %>
+
             </div>
             <div class="small-3 columns">
               <%= f.submit 'Search', class: 'button' %>
@@ -70,11 +72,7 @@
     </nav>
     </div>
 
-    <div class="row collapse">
-      <div class="small-12 small-centered medium-8 medium-centered large-4 large-centered columns">
-    <%= yield %>
-      </div>
-    </div>
     <%= javascript_include_tag "application" %>
+
   </body>
 </html>
