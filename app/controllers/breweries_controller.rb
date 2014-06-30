@@ -1,6 +1,6 @@
 class BreweriesController < ApplicationController
   def index
-    if !@searched_breweries.nil?
+    if @searched_breweries
       @breweries = @searched_breweries
     else
       @breweries = Brewery.all
