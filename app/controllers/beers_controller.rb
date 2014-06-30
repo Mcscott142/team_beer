@@ -1,7 +1,13 @@
 class BeersController < ApplicationController
 
   def index
-    @beers = Beer.all.order(vote_count: :desc).page params[:page]
+    if ['vote_count', 'avg_rating', 'name'].include? params[:order_by]
+      order_by = { params[:order_by] => :desc}
+    else
+      order_by = { 'vote_count' => :desc }
+    end
+
+    @beers = Beer.all.order(order_by).page params[:page]
   end
 
   def new
