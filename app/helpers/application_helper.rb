@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   def insert_bottle_caps(avg_rating)
 
     html = ""
@@ -13,6 +12,4 @@ module ApplicationHelper
 
     html
   end
-
-
 end
