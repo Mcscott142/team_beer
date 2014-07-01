@@ -44,6 +44,20 @@ and downvote a beer
     beer.votes.count.should == 1
   end
 
+  scenario 'user changes their vote on a beer' do
+    user = FactoryGirl.create(:user)
+    sign_in_test_user(user)
+
+    beer = FactoryGirl.create(:beer)
+
+    visit '/beers'
+    click_on "Upvote"
+    click_on "Downvote"
+
+    beer.votes.count.should == 1
+    beer.votes.first.vote.should == -1
+  end
+
   scenario 'user upvotes a beer without logging in first' do
     beer = FactoryGirl.create(:beer)
 
