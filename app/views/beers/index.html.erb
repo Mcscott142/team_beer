@@ -20,6 +20,7 @@
       <em><%= beer.brewery.name %></em></span><br>
 
       <span>Average Rating: <%= beer.avg_rating.round(1) %></span><br>
+      <%= raw insert_bottle_caps(beer.avg_rating) %><br>
       <span>ABV: <%= beer.alcohol_content %></span><br>
       <p><%= "#{beer.description[0..40]}..." %></p><br>
 
