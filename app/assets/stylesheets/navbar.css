@@ -1,14 +1,46 @@
 #signedin {
   color: white;
   text-decoration: bold;
-  padding-top: 10px;
   padding-left: 10px;
+  margin-left: 20px;
 }
 
-.searchbox {
+.search_box {
   padding-left: 0px;
+  margin-right: 200px;
 }
 
 .hidden_label {
 display: none;
 }
+
+#search_drop {
+  padding-top: 5px;
+  margin-left: 5px;
+  padding-right: 10px;
+
+}
+
+.drop {
+   height: 15px;
+}
+
+#search_search_type {
+height: 30px;
+padding-left: 5px;
+margin-right: 0px;
+background-color: #008cba;
+border-color: #007095;
+color: white;
+padding-top: 5px;
+}
+
+.button {
+  margin-right: 200px;
+}
+
+#search_query {
+  margin-right: 0px;
+  padding-right: 0px;
+}
+
