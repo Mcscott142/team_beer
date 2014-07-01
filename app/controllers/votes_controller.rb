@@ -10,11 +10,11 @@ class VotesController < ApplicationController
         if existing_vote.vote.to_i == -1 && params[:vote].to_i == 1
           existing_vote.vote = 1
           existing_vote.save
-          2.times do existing_vote.vote_on_this_object end
+          2.times {existing_vote.vote_on_this_object}
         elsif existing_vote.vote.to_i == 1 && params[:vote].to_i == -1
           existing_vote.vote = -1
           existing_vote.save
-          2.times do existing_vote.vote_on_this_object end
+          2.times {existing_vote.vote_on_this_object}
         elsif existing_vote.vote.to_i == params[:vote].to_i
           flash[:notice] = "You already voted on that!"
         end
