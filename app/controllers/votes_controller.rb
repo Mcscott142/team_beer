@@ -4,7 +4,8 @@ class VotesController < ApplicationController
     vote.voteable_detection(params)
     if current_user
       vote.user_id = current_user.id
-      existing_vote = Vote.find_by(user_id: current_user.id, voteable_id: vote.voteable_id,
+      existing_vote = Vote.find_by(user_id: current_user.id, 
+                      voteable_id: vote.voteable_id,
                       voteable_type: vote.voteable_type)
       if existing_vote
         if existing_vote.vote.to_i == -1 && params[:vote].to_i == 1
