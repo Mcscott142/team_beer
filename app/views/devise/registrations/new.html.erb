@@ -6,6 +6,8 @@
   <%= f.input :email, autofocus: true %>
   <%= f.input :username %>
   <%= f.input :is_21, label: 'Are you over 21?' %>
+  <div><%= f.label :image %><br />
+  <%= f.file_field :image %>
 
   <%= f.input :password, autocomplete: "off" %>
 

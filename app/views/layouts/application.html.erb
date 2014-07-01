@@ -27,7 +27,7 @@
         <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
       </ul>
       <section class="top-bar-section">
-        <!-- Right Nav Section -->
+        <!-- Left Nav Section -->
         <ul class="left">
           <li class="has-dropdown">
             <a href="#">Beer</a>
@@ -38,16 +38,15 @@
           </li>
           <li><%= link_to "Breweries", breweries_path %></li>
         </ul>
-        <!-- Left Nav Section -->
+        <!--  Right Nav Section -->
         <ul class="right">
         <li class="has-form">
          <%= form_for :search, url: searches_path, method: :get do |f| %>
           <div class="row collapse">
-
             <div class="small-2 columns", id="search_drop">
              <%= f.select :search_type, collection: ['Beer', 'Brewery'] %>
-             </div>
-             <div class="small-3 columns">
+            </div>
+            <div class="small-3 columns">
               <%= f.label 'query', class: 'hidden_label'%>
               <%= f.text_field :query %>
             </div>
@@ -58,6 +57,7 @@
           <% end %>
         </li>
           <% if user_signed_in? %>
+           <li> <%= image_tag current_user.image_url(:med_thumb) if current_user.image?  %></li>
           <li id="signedin"><%= link_to "#{current_user.username}", edit_user_registration_path %></li>
           <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
           <% else %>
