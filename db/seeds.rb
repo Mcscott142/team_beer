@@ -6,6 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Region.create(name: "Unknown")
 Region.create(name: "Northeast")
 Region.create(name: "Southeast")
 Region.create(name: "Midwest")
@@ -17,10 +18,20 @@ Region.create(name: "Unamerican")
   BeerType.create(name: t )
 end
 
-Brewery.create(name: "Sam Adams", description: "Boston beer" ,city: "Boston", state: "MA", region_id: 1)
-Brewery.create(name: "Abita", description: "Good beer" ,city: "New Orleans", state: "LA", region_id: 2)
-Brewery.create(name: "Milwaukee's Best", description: "The Beast" ,city: "Milwaukee", state: "WI", region_id: 3)
-Brewery.create(name: "Elisian", description: "Hipster beer" ,city: "Seattle", state: "WA", region_id: 4)
-Brewery.create(name: "Stone Brewing", description: "Hoppy beer" ,city: "Escondito", state: "CA", region_id: 5)
-Brewery.create(name: "Henekien", description: "German beer" ,city: "Germany", state: "Not America", region_id: 6)
+(1990..2014).each do |year|
+  url = URI.parse("http://api.brewerydb.com/v2/breweries?key=#{ENV['BREWERYDB_KEY']}&established=-#{year.to_s}")
+  req = Net::HTTP::Get.new(url.to_s)
+  res = Net::HTTP.start(url.host, url.port) {|http| http.request(req) }
+  results = JSON.parse(res.body)
+  results["data"].each do |brewery|
+    begin
+      if brewery["name"]
+
+        Brewery.create(name: brewery["name"], description: brewery["description"], url: brewery["website"], image: brewery["images"]["icon"], region_id: 1 )
+      end
+    rescue
+      puts brewery
+    end
+  end
+end
 
