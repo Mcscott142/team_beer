@@ -2,7 +2,7 @@ class CreateBreweries < ActiveRecord::Migration
   def change
     create_table :breweries do |t|
       t.string :name, null: false
-      t.string :description, null: false
+      t.text :description
       t.integer :region_id, null: false
       t.string :city
       t.string :state
