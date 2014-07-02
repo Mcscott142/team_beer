@@ -1,14 +1,20 @@
 
-<br><%=  @brewery.name %>
-<br><%=  @brewery.description %>
-<br><%=  @brewery.city %>
-<br><%=  @brewery.state %>
-<br><%=  @brewery.url %>
-<br><%=  @brewery.region.name %>
-<%= image_tag @brewery.image %>
+<h1 class="beerh1"><%= image_tag @brewery.image %><br>
+<%=  @brewery.name %></h1>
+
+<br>
+<br>
+<div class="row">
+  <div class="small-12 columns">
+      <ul class="beer_show">
+<li><%= "Description: #{@brewery.description}" %></li>
+<br><br><li>Website: <%=link_to "#{@brewery.url}", @brewery.url %></li>
+</ul>
+
 
 <ul>
+<h2> Beer List </h2>
 <% @beers.each do |b| %>
-  <li> <%= b.name %> </li>
+  <li> <%=link_to b.name, beer_path(b) %> </li>
 <% end %>
 </ul>

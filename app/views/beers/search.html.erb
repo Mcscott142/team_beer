@@ -1,7 +1,11 @@
 <h2>Search Results</h2>
 
-<ul>
-  <% @beers.each do |beer| %>
-    <li><%= link_to beer.name, beer_path(beer) %></li>
-  <% end %>
-</ul>
+<div class="row">
+  <div class="small-12 columns">
+    <ul>
+      <% @beers.each do |beer| %>
+      <li><%= link_to beer.name, beer_path(beer) %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

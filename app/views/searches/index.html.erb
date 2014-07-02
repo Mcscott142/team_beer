@@ -1,5 +1,6 @@
 <% if @searched_beers %>
-  <h1>Beer List</h1>
+   <div class="beer_index_page">
+  <h1 class="header">Beer List</h1>
   <ul>
   <% @searched_beers.each do |beer| %>
     <li>
@@ -13,13 +14,14 @@
   </ul>
   <ul class="pagination" ><%= paginate @searched_beers %>  </ul>
 <% else %>
-  <h1>Breweries</h1>
+  <h1 class="header">Breweries</h1>
   <ul>
     <% @searched_breweries.each do |b| %>
-      <li><%= "#{b.name}, #{b.state}, #{b.region.name}" %></li>
+      <li class="brew_list"><%= link_to "#{b.name}", brewery_path(b) %></li>
     <% end %>
   </ul>
   <ul class="pagination" ><%= paginate @searched_breweries %>  </ul>
 <% end %>
+</div>
 
 

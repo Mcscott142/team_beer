@@ -1,5 +1,5 @@
 BreweryDb.configure do |config|
-  config.apikey = ENV['BEERDB_API_KEY']
+  config.apikey = ENV['BREWERYDB_KEY']
 end
 
 
