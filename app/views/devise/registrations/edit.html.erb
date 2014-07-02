@@ -7,7 +7,7 @@
   <%= f.email_field :email, autofocus: true %></div>
   <h6>Add Profile Pic</h6>
   <div><%= f.label :image %><br />
-  <%= f.file_field :image %>
+    <%= f.file_field :image %>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>

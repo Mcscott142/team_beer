@@ -1,4 +1,4 @@
-<div class="beer_index_page">
+ <div class="beer_index_page">
 
 <ul> <b>Sort By</b>
   <li><%= link_to "Name", {:controller => "beers", :action => "index", :order_by => 'name' }%></li>
@@ -6,7 +6,8 @@
   <li><%= link_to "Rating", {:controller => "beers", :action => "index", :order_by => 'avg_rating' }%></li>
 </ul>
 <br>
-
+<br>
+<br>
 <div>
 <ul>
 <% @beers.each do |beer| %>
