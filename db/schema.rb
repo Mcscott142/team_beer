@@ -41,10 +41,10 @@ ActiveRecord::Schema.define(version: 20140629000230) do
 
   create_table "breweries", force: true do |t|
     t.string   "name",        null: false
-    t.string   "description", null: false
+    t.text     "description"
     t.integer  "region_id",   null: false
-    t.string   "city",        null: false
-    t.string   "state",       null: false
+    t.string   "city"
+    t.string   "state"
     t.string   "url"
     t.string   "image"
     t.datetime "created_at"
