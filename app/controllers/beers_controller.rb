@@ -9,7 +9,16 @@ class BeersController < ApplicationController
       order_by = { 'vote_count' => :desc }
     end
 
-    @beers = Beer.order(order_by).page(params[:page])
+    if params[:beer_type]
+      results = Beer.find_by_sql(["SELECT beers.id FROM beers JOIN beer_types
+        ON beers.beer_type_id = beer_types.id WHERE beer_types.name = ?",
+        params[:beer_type]])
+      new_results = results.map { |x| x.id }
+      @beers = Beer.where(id: new_results).order(order_by).page(params[:page])
+
+    else
+      @beers = Beer.order(order_by).page(params[:page])
+    end
   end
 
   def new
