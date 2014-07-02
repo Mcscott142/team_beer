@@ -1,7 +1,11 @@
-<h1>Breweries</h1>
+<h1 class="header">Breweries</h1>
 
-<ul>
+<ul class="row">
 <% @breweries.each do |b| %>
-<li><%= "#{b.name}, #{b.state}, #{b.region.name}" %></li>
+<li class="brew_list"><%= link_to b.name, brewery_path(b) %></li>
 <% end %>
+</ul>
+
+<ul class="pagination">
+  <%= paginate @breweries %>
 </ul>

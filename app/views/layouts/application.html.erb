@@ -42,7 +42,6 @@
         <ul class="right">
         <li class="has-form">
          <%= form_for :search, url: searches_path, method: :get do |f| %>
-          <div class="row collapse">
             <div class="small-2 columns", id="search_drop">
              <%= f.select :search_type, collection: ['Beer', 'Brewery'] %>
             </div>
@@ -53,7 +52,6 @@
             <div class="small-3 columns">
               <%= f.submit 'Search', class: 'button' %>
             </div>
-          </div>
           <% end %>
         </li>
           <% if user_signed_in? %>

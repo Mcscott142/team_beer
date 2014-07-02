@@ -3,7 +3,7 @@ class BreweriesController < ApplicationController
     if @searched_breweries
       @breweries = @searched_breweries
     else
-      @breweries = Brewery.all
+      @breweries = Brewery.order(:name).page(params[:page])
     end
   end
 

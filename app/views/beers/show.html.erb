@@ -1,27 +1,43 @@
 
 <%= link_to "DeleteBeer", admin_beer_path(@beer), method: :delete if current_user && current_user.is_admin %>
+<h1 class="beerh1"><%= image_tag @beer.image_url(:med_thumb) if @beer.image?  %>
+        <%= image_tag "default_beer2.jpg", size: '150x150' if !@beer.image?  %>
+        <br><%=  @beer.name %></h1><br><br>
+<div class="row">
+  <div class="small-8 columns">
+      <ul class="beer_show">
+        <li><%= "Description: #{@beer.description}" %></li>
+        <li><%=  "Alc %: #{@beer.alcohol_content}" %></li>
+        <li>Brewery: <%= link_to "#{@beer.brewery.name}", brewery_path(@beer.brewery) %></li>
+        <li><%=  "Style: #{@beer.beer_type.name}" %></li>
+      </ul>
+  </div>
+</div>
 
-<br><%=  @beer.name %>
-<br><%=  @beer.description %>
-<br><%=  @beer.alcohol_content %>
-<br><%=  @beer.brewery.name %>
-<br><%=  @beer.beer_type.name %>
+<div class="row">
+  <div class="small-12 columns">
+    <ul>
+    <h3><u>Reviews</u></h3>
+    <% @reviews.each do |r| %>
+      <li class="beer-review-text"> <%= "#{r.rating} - #{r.title} #{r.description} | #{r.vote_count} other users found this review helpful" %> <%= button_to "this was helpful!", beer_review_votes_path(@beer, r), params: { vote: 1, voteable_type: "Review" } %><%= link_to "DeleteReview", admin_review_path(r), method: :delete if current_user && current_user.is_admin %>
+      </li>
+    <% end %>
+    </ul>
+    </div>
+  </div>
 
-<ul>
-<% @reviews.each do |r| %>
-  <li> <%= "#{r.rating} - #{r.title} #{r.description} | #{r.vote_count} other users found this review helpful" %> <%= button_to "this was helpful!", beer_review_votes_path(@beer, r), params: { vote: 1, voteable_type: "Review" } %><%= link_to "DeleteReview", admin_review_path(r), method: :delete if current_user && current_user.is_admin %>
-  </li>
-<% end %>
-</ul>
-
-Your Review Here:
-<%= simple_form_for [@beer, @new_review] do |f| %>
-  <%= f.input :rating, label: "Rating", as: :radio_buttons, item_wrapper_class: "inline", collection: 1..5 %>
-  <%= f.input :title, label: "Title" %>
-  <%= f.input :description, label: "Review" %>
-  <%= f.button :submit %>
-
-<% end %>
-
-
-
+  <div class="row">
+    <div class="small-12 columns">
+  <h4>Your Review Here:</h4>
+  <%= simple_form_for [@beer, @new_review] do |f| %>
+      <%= f.radio_button :rating, 1%><%= f.label "1" %>
+      <%= f.radio_button :rating, 2%><%= f.label "2" %>
+      <%= f.radio_button :rating, 3%><%= f.label "3" %>
+      <%= f.radio_button :rating, 4%><%= f.label "4" %>
+      <%= f.radio_button :rating, 5%><%= f.label "5" %>
+      <%= f.input :title, label: "Title" %>
+      <%= f.input :description, label: "Review" %>
+      <%= f.button :submit %>
+    <% end %>
+    </div>
+  </div>

@@ -14,7 +14,7 @@ Region.create(name: "Northwest")
 Region.create(name: "West Coast")
 Region.create(name: "Unamerican")
 
-["IPA", "Hefewizen", "Pale Ale", "Lager", "Stout", "Porter", "Cheap Beer", "Pilsner", "\"ICE\""].each do |t|
+["Blonde", "Amber", "Lager", "Stout", "Wheat", "Oktoberfest", "Imperial", "IPA"].each do |t|
   BeerType.create(name: t )
 end
 

@@ -1,0 +1,18 @@
+.header {
+  text-align: center;
+}
+
+.brew_list {
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  font-size: 20pt;
+}
+
+.pagination {
+  text-align: center;
+}
+
+
